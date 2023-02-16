@@ -26,12 +26,15 @@ public class ejercicio5 {
         System.out.println("Nomina de: " + nombre + " " + apellido);
         System.out.println("Estado: " + puesto);
         System.out.println("Salario bruto: ");
-        salarioBruto(horas, tarifa);
+        salarioBruto(horas, tarifa, hijos);
         System.out.println("======================================");
+
+
 
     }
 
-    public static void salarioBruto(int horas, double tarifa) {
+    public static double salarioBruto(int horas, double tarifa, int hijos) {
+
 
         double salarioBruto = 0;
         if (horas <= 169){
@@ -51,37 +54,36 @@ public class ejercicio5 {
             System.out.println(salarioBruto + " €");
             System.out.println("Total de: " + horasExtraSuperiores + " horas con incremento del 60%, " + horasExtra + " horas con incremento del 50% y " + (horas - horasExtra - horasExtraSuperiores) + " horas sin incremento");
         }
-    }
 
-    public static void calculoDeducciones(double salarioBruto, int hijos){
+
         System.out.println("Calculo de contribuciones:\n");
 
         System.out.println("Contribución para el pago de la deuda social y contingencias comunes imponible:");
-        double deduccion1 = salarioBruto * 3.49;
+        double deduccion1 = salarioBruto * 0.0349;
         System.out.println(salarioBruto + " * 3.49 % = " + deduccion1 + " €\n");
 
         System.out.println("Contribución de contingencias comunes no imponible:");
-        double deduccion2 = salarioBruto * 6.15;
+        double deduccion2 = salarioBruto * 0.0615;
         System.out.println(salarioBruto + " * 6.15 % = " + deduccion2 + " €\n");
 
         System.out.println("Seguro médico privado:");
-        double deduccion3 = salarioBruto * 0.95;
+        double deduccion3 = salarioBruto * 0.0095;
         System.out.println(salarioBruto + " * 0.95 % = " + deduccion3 + " €\n");
 
         System.out.println("Fondo de pensiones");
-        double deduccion4 = salarioBruto * 8.44;
+        double deduccion4 = salarioBruto * 0.0844;
         System.out.println(salarioBruto + " * 8.44 % = " + deduccion4 + " €\n");
 
         System.out.println("Seguro de desempleo");
-        double deduccion5 = salarioBruto * 3.05;
+        double deduccion5 = salarioBruto * 0.0305;
         System.out.println(salarioBruto + " * 3.05 % = " + deduccion5 + " €\n");
 
         System.out.println("Pensión complementaria (Entidad privada)");
-        double deduccion6 = salarioBruto * 3.81;
+        double deduccion6 = salarioBruto * 0.0381;
         System.out.println(salarioBruto + " * 3.81 % = " + deduccion6 + " €\n");
 
         System.out.println("Contribución de jubilación anticipada");
-        double deduccion7 = salarioBruto * 1.02;
+        double deduccion7 = salarioBruto * 0.0102;
         System.out.println(salarioBruto + " * 1.02 % = " + deduccion7 + " €\n");
 
         double deduccionTotal = deduccion1 + deduccion2 + deduccion3 + deduccion4 + deduccion5 + deduccion6 + deduccion7;
@@ -90,10 +92,14 @@ public class ejercicio5 {
         System.out.println("Salario neto: " + (salarioBruto - deduccionTotal) + " €\n");
         calculoHijos(hijos);
 
+        double salarioNeto = salarioBruto - deduccionTotal + calculoHijos(hijos);
+        System.out.println("Salario neto a pagar: " + salarioNeto + " €\n");
 
-
+        return 0;
     }
-    public static void calculoHijos(int hijos){
+
+
+    public static double calculoHijos(int hijos){
         if (hijos == 1){
             int deduccionHijos = 20;
             System.out.println("Prima familiar: " + deduccionHijos + " €\n");
@@ -104,6 +110,7 @@ public class ejercicio5 {
             int deduccionHijos = 70 + (hijos - 2) * 20;
             System.out.println("Prima familiar: " + deduccionHijos + " €\n");
         }
+        return 0;
     }
 
 
